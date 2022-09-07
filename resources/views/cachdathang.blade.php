@@ -2,378 +2,124 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="/css/product_info.css">
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <script src="https://kit.fontawesome.com/4db44f2445.js" crossorigin="anonymous"></script>
-  <title>Cách đặt hàng</title>
+    @include('layout.head')
+    <link rel="stylesheet" href="/css/product_info.css">
+
+    <title>Cách đặt hàng</title>
 </head>
 
 <body>
-  <!-- Header -->
-  <nav class="navbar navbar-expand-sm bg-light navbar-dark fixed-top mb-4">
-    <div class="container-fluid col-sm-3">
-      <a class="navbar-brand" href="/view/index.html">
-        <img class="logo" src="/image/logo-book-removebg-preview.png" alt="Logo">
-      </a>
-    </div>
+    @include('layout.header')
 
-
-    <form class="d-flex col-sm-5">
-      <div class="input-group">
-        <input class="form-control" type="text" placeholder="Tìm kiếm sách">
-        <button class="btn btn-outline-primary" type="submit">
-          <span class="input-group-btn"><i class="fas fa-search"></i></span>
-        </button>
-      </div>
-    </form>
-
-    <div class="col-sm-1">
-
-    </div>
-
-    <div class="col-sm-3">
-      <div class="btn-group mx-2 py-2">
-        <a href="{{ url('/dang-nhap') }}"><button type="button" class="btn btn-sm btn-outline-primary px-1">Đăng
-            nhập</button></a>
-        <a href="{{ url('/dang-ky') }}"><button type="button" class="btn btn-sm btn-outline-primary px-2"> Đăng ký
-          </button></a>
-      </div>
-
-      <div class="btn-group">
-        <a href="#!">
-          <button class="popup" onclick="myFunction()" style="font-size: 22px; border: none; background: none;">
-            <i class="far fa-heart">
-              <span class="badge bg-danger" style="font-size: 11px;">0</span>
-            </i>
-            <span class="popuptext" id="myPopup">
-              Chưa có sản phẩm yêu thích...
-            </span>
-          </button>
-        </a>
-
-        <script>
-          // When the user clicks on div, open the popup
-          function myFunction() {
-            var popup = document.getElementById("myPopup");
-            popup.classList.toggle("show");
-          }
-        </script>
-
-        <a href="{{ url('/gio-hang') }}">
-          <button style="font-size: 22px; border: none; background: none;"><i class="fas fa-shopping-cart">
-              <span class="badge bg-danger" style="font-size: 11px;">2</span></i>
-          </button>
-        </a>
-      </div>
-    </div>
-
-  </nav>
-
-  <!-- Menu -->
-  <nav class="navbar navbar-expand-sm bg-primary text-white navbar-dark">
-    <div class="container-fluid justify-content-center" style="margin-top: 60px;">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link text-light" href="{{ url('/') }}">Trang chủ</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="{{ url('/gioi-thieu') }}">Giới thiệu</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="{{ url('/tintuc-sukien') }}">Tin tức - Sự kiện</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="{{ url('/sach-da-xem') }}">Sách đã xem</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light active" href="{{ url('/cach-dat-hang') }}">Cách đặt hàng</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="{{ url('/lien-he') }}">Liên hệ</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <div class="container-mt-5">
-    <div class="row">
-      <div class="d-flex col-sm-3 py-3 bg-light">
-        <div class="list-group list-group-flush ms-3">
-          <div class="dropdown dropend">
-            <a href="#" class="list-group-item list-group-item-action border border-0" data-bs-toggle="dropdown">
-              <img src="/image/danh-muc/dm1.png" alt="dm1">
-              Sách hay nổi bật </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Sách bán chạy</a></li>
-              <li><a class="dropdown-item" href="#">Nhiều người giới thiệu</a></li>
-              <li><a class="dropdown-item" href="#">Tác phẩm đạt giải Nobel</a></li>
-            </ul>
-
-            <a href="#" class="list-group-item list-group-item-action border border-0" data-bs-toggle="dropdown">
-              <img src="/image/danh-muc/dm2.png" alt="dm2">
-              Sách thiếu nhi </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Truyện tranh</a></li>
-              <li><a class="dropdown-item" href="#">Bách khoa tri thức</a></li>
-              <li><a class="dropdown-item" href="#">Sách song ngữ thiếu nhi</a></li>
-              <li><a class="dropdown-item" href="#">Sách tô màu</a></li>
-              <li><a class="dropdown-item" href="#">Văn học thiếu nhi</a></li>
-              <li><a class="dropdown-item" href="#">Manga - Comic</a></li>
-            </ul>
-
-            <a href="#" class="list-group-item list-group-item-action border border-0" data-bs-toggle="dropdown">
-              <img src="/image/danh-muc/dm3.png" alt="dm3">
-              Sách giành cho giới trẻ </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Kĩ năng sống</a></li>
-              <li><a class="dropdown-item" href="#">Kĩ năng nghề nghiệp</a></li>
-              <li><a class="dropdown-item" href="#">Phát triển tâm thức</a></li>
-              <li><a class="dropdown-item" href="#">Phổ biến kiến thức</a></li>
-            </ul>
-            <a href="#" class="list-group-item list-group-item-action border border-0" data-bs-toggle="dropdown">
-              <img src="/image/danh-muc/dm4.png" alt="dm4">
-              Tủ sách gia đình </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Nuôi dạy con</a></li>
-              <li><a class="dropdown-item" href="#">Chăm sóc sức khoẻ</a></li>
-              <li><a class="dropdown-item" href="#">Hôn nhân gia đình</a></li>
-              <li><a class="dropdown-item" href="#">Cẩm nang du lịch</a></li>
-              <li><a class="dropdown-item" href="#">Dạy nấu ăn</a></li>
-              <li><a class="dropdown-item" href="#">Thời trang - làm đẹp</a></li>
-            </ul>
-            <a href="#" class="list-group-item list-group-item-action border border-0" data-bs-toggle="dropdown">
-              <img src="/image/danh-muc/dm5.png" alt="dm5">
-              Sách khoa học - công nghệ </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Công nghệ thông tin</a></li>
-              <li><a class="dropdown-item" href="#">Tạp chí khoa học</a></li>
-              <li><a class="dropdown-item" href="#">Khoa học tự nhiên</a></li>
-              <li><a class="dropdown-item" href="#">Y - dược</a></li>
-              <li><a class="dropdown-item" href="#">Cơ khí, chế tạo máy</a></li>
-              <li><a class="dropdown-item" href="#">Xây dựng, kiến trúc</a></li>
-              <li><a class="dropdown-item" href="#">Điện - Điện tử</a></li>
-              <li><a class="dropdown-item" href="#">Môi trường</a></li>
-              <li><a class="dropdown-item" href="#">Địa lý, thiên văn</a></li>
-            </ul>
-            <a href="#" class="list-group-item list-group-item-action border border-0" data-bs-toggle="dropdown">
-              <img src="/image/danh-muc/dm6.png" alt="dm6">
-              Sách quản lý - kinh tế </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Quản trị - Kinh doanh</a></li>
-              <li><a class="dropdown-item" href="#">Marketing</a></li>
-              <li><a class="dropdown-item" href="#">Start-up</a></li>
-              <li><a class="dropdown-item" href="#">Doanh nhân</a></li>
-              <li><a class="dropdown-item" href="#">Sách kinh tế</a></li>
-              <li><a class="dropdown-item" href="#">Quản lý nhà nước</a></li>
-            </ul>
-            <a href="#" class="list-group-item list-group-item-action border border-0" data-bs-toggle="dropdown">
-              <img src="/image/danh-muc/dm7.png" alt="dm7">
-              Sách chính trị - xã hội </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Sách lịch sử</a></li>
-              <li><a class="dropdown-item" href="#">Văn hoá - Xã hội</a></li>
-              <li><a class="dropdown-item" href="#">Chính trị - tư tưởng</a></li>
-              <li><a class="dropdown-item" href="#">Pháp luật</a></li>
-              <li><a class="dropdown-item" href="#">Những vấn đề quốc tế</a></li>
-              <li><a class="dropdown-item" href="#">Sách tôn giáo</a></li>
-              <li><a class="dropdown-item" href="#">Chủ tịch Hồ Chí Minh</a></li>
-            </ul>
-            <a href="#" class="list-group-item list-group-item-action border border-0" data-bs-toggle="dropdown">
-              <img src="/image/danh-muc/dm8-all.png" alt="dm8-all">
-              Tất cả danh mục </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Sách thiếu nhi</a></li>
-              <li><a class="dropdown-item" href="#">Sách dành cho giới trẻ</a></li>
-              <li><a class="dropdown-item" href="#">Tủ sách gia đình</a></li>
-              <li><a class="dropdown-item" href="#">Sách khoa học - công nghệ</a></li>
-              <li><a class="dropdown-item" href="#">Sách quản lý - kinh tế</a></li>
-              <li><a class="dropdown-item" href="#">Sách chính trị - xã hội</a></li>
-              <li><a class="dropdown-item" href="#">Sách giáo khoa - giáo trình</a></li>
-              <li><a class="dropdown-item" href="#">Sách ngoại ngữ</a></li>
-              <li><a class="dropdown-item" href="#">Văn học - nghệ thuật</a></li>
-              <li><a class="dropdown-item" href="#">Sách khác</a></li>
-            </ul>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-
-        <ul class="navbar-nav py-2">
-          <li class="nav-item">
-            <a href="{{ url('/') }}">Trang chủ</a>
-            <span> > </span>
-            <span><ins>Cách đặt hàng</ins></span>
-          </li>
-        </ul>
-
-        <div class="container py-2">
-          <h2 class="text-center">CÁCH ĐẶT HÀNG</h2>
-          <h6 class="text-center py-3">Chi tiết về các phương thức mua hàng và các tuỳ chọn thanh toán có thể được
-            thanh toán</h6>
-
-          <div class="row pt-2">
-            <span class="col-2">
-              <img src="/image/product-info-img/choose_product.png" alt="choose_product">
-            </span>
-            <div class="col">
-              <h6>1. Chọn sản phẩm</h6>
-              <p>Chọn sản phẩm bạn muốn. Đặt số lượng và bấm Thêm vào giỏ hoặc bấm Mua ngay để đến trang
-                Thanh toán ngay lập tức.</p>
-            </div>
-          </div>
-
-          <div class="row py-3">
-            <span class="col-2">
-              <img src="/image/product-info-img/order.png" alt="choose_product">
-            </span>
-            <div class="col">
-              <h6>2. Giỏ hàng</h6>
-              <p>Kiểm tra các mặt hàng trong giỏ. Tại đây bạn có thể lựa chọn các sản phẩm đặt mua và thanh
-                toán. Bấm nút Thanh toán để đến trang thanh toán.</p>
-            </div>
-          </div>
-
-          <div class="row pb-2">
-            <span class="col-2">
-              <img src="/image/product-info-img/confirm_order.png" alt="choose_product">
-            </span>
-            <div class="col">
-              <h6>3. Thanh toán</h6>
-              <p>- Đăng nhập hoặc đăng ký tài khoản.
-                <br>- Hệ thống sẽ tự động tính phí giao hàng. Bạn có thể chọn lại phương thức vận chuyển khác.
-                <br>- Chọn phương thức thanh toán.
-                <br>- Nhấn nút đặt hàng
-              </p>
-            </div>
-          </div>
-
-          <div class="row">
-            <span class="col-2">
-              <img src="/image/product-info-img/folow_process.png" alt="choose_product">
-            </span>
-            <div class="col">
-              <h6>4. Xác nhận đơn hàng</h6>
-              <p>Hệ thống hiển thị popup xác nhận thông tin đơn hàng. Kiểm tra và nhấn nút xác nhận để giao
-                dịch và thanh toán. Nếu bạn chọn thanh toán trực tuyến, hệ thống sẽ đưa bạn đến trang để thực
-                hiện thanh toán.</p>
-            </div>
-          </div>
-
-          <div class="row py-4">
-            <span class="col-2">
-              <img src="/image/product-info-img/flow_order.png" alt="choose_product">
-            </span>
-            <div class="col">
-              <h6>5. Theo dõi trạng thái</h6>
-              <p>Sau khi đặt hàng, bạn có thể theo dõi tình trạng đơn hàng của mình trong Tài khoản cá nhân.
-                <br>Sau khi gian hàng đã chuyển hàng cho đơn vị vận chuyển, mã vận đơn sẽ được cập nhật.
-              </p>
-            </div>
-          </div>
-
-          <h6>Thanh toán</h6>
-          <p>Công ty cổ phần phát triển giải pháp giáo dục VIVI EDUCATION là đơn vị vận hành sàn book365.vn,
-            do đó tên người nhận thanh toán của tất cả các kênh trực tuyến, bao gồm tên tài khoản ngân hàng
-            là Công ty cổ phần phát triển giải pháp giáo dục VIVI EDUCATION. Hãy yên tâm rằng bạn đang thanh
-            toán cho sàn book365.vn
-            <br>Ngân hàng trực tuyến
-            <br>Chuyển khoản ngân hàng
-            <br>Ví điện tử Momo
-            <br>Thẻ tín dụng / Thẻ ghi nợ
-            <br>Thanh tóan khi nhận hàng COD
-          </p>
-
-        </div>
-
-
-      </div>
-    </div>
-  </div>
-
-
-  <!--Footer-->
-  <div class="mt-5 p-4 bg-primary text-white text-center">
-    <p>SMARTBOOK - SÁCH LÀ TRI THỨC CỦA NHÂN LOẠI</p>
-  </div>
-
-  <div class="container-fluid py-3">
-    <div class="row">
-      <div class="col-sm-3">
-        <strong class="tg-logo"><a href="javascript:void(0);"><img src="/image/logo-book-removebg-preview.png"
-              alt="image description" style="width: 70%;"></a></strong>
-        <ul class="navbar-nav border-top pt-2">
-          <li>
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Trâu Quỳ - Gia Lâm - Hà Nội
-            </span>
-          </li>
-          <li>
-            <i class="fas fa-phone-alt"></i>
-            <span>
-              <em>+84 961 987 761</em>
-            </span>
-          </li>
-          <li>
-            <i class="fas fa-clock"></i>
-            <span>Phục vụ tất cả các ngày từ 9am - 5pm</span>
-          </li>
-          <li>
-            <i class="fas fa-envelope"></i>
-            <span>
-              <em><a href="mailto:smartbook@gmail.com">smartbook@gmail.com</a></em>
-            </span>
-          </li>
-        </ul>
-        <div class="pt-2">
-          <a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
-          <a class="ps-2" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
-          <a class="ps-2" href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
-          <a class="ps-2" href="javascript:void(0);"><i class="fa fa-google-plus"></i></a>
-          <a class="ps-2" href="javascript:void(0);"><i class="fa fa-rss"></i></a>
-        </div>
-      </div>
-
-
-      <div class="col-sm-6">
+    <div class="container-mt-5">
         <div class="row">
-          <ul class="navbar-nav col-sm-5 p-4" style="margin-left: 100px;">
-            <li><a href="javascript:void(0);">Điều khoản</a></li>
-            <li><a href="javascript:void(0);">Chính sách giảm giá</a></li>
-            <li><a href="javascript:void(0);">Lợi nhuận</a></li>
-            <li><a href="javascript:void(0);">Riêng tư</a></li>
-            <li><a href="javascript:void(0);">Cookies</a></li>
-            <li><a href="javascript:void(0);">Liên hệ với chúng tôi</a></li>
-            <li><a href="javascript:void(0);">Các chi nhánh</a></li>
+            @include('layout.sidebar')
 
-          </ul>
-          <ul class="navbar-nav col-sm-5 p-4">
-            <li><a href="javascript:void(0);">Câu chuyện của chúng tôi</a></li>
-            <li><a href="javascript:void(0);">Gặp gỡ đội của tôi</a></li>
-            <li><a href="javascript:void(0);">FAQ</a></li>
-            <li><a href="javascript:void(0);">Lời chứng thực</a></li>
-            <li><a href="javascript:void(0);">Gia nhập đội ngũ chúng tôi</a></li>
-            <li><a href="javascript:void(0);">Tầm nhìn &amp; Mục tiêu</a></li>
-          </ul>
+            <div class="col">
+
+                <ul class="navbar-nav py-2">
+                    <li class="nav-item">
+                        <a href="{{ url('/') }}">Trang chủ</a>
+                        <span> > </span>
+                        <span><ins>Cách đặt hàng</ins></span>
+                    </li>
+                </ul>
+
+                <div class="container py-2">
+                    <h2 class="text-center">CÁCH ĐẶT HÀNG</h2>
+                    <h6 class="text-center py-3">Chi tiết về các phương thức mua hàng và các tuỳ chọn thanh toán có thể
+                        được
+                        thanh toán</h6>
+
+                    <div class="row pt-2">
+                        <span class="col-2">
+                            <img src="/image/product-info-img/choose_product.png" alt="choose_product">
+                        </span>
+                        <div class="col">
+                            <h6>1. Chọn sản phẩm</h6>
+                            <p>Chọn sản phẩm bạn muốn. Đặt số lượng và bấm Thêm vào giỏ hoặc bấm Mua ngay để đến trang
+                                Thanh toán ngay lập tức.</p>
+                        </div>
+                    </div>
+
+                    <div class="row py-3">
+                        <span class="col-2">
+                            <img src="/image/product-info-img/order.png" alt="choose_product">
+                        </span>
+                        <div class="col">
+                            <h6>2. Giỏ hàng</h6>
+                            <p>Kiểm tra các mặt hàng trong giỏ. Tại đây bạn có thể lựa chọn các sản phẩm đặt mua và
+                                thanh
+                                toán. Bấm nút Thanh toán để đến trang thanh toán.</p>
+                        </div>
+                    </div>
+
+                    <div class="row pb-2">
+                        <span class="col-2">
+                            <img src="/image/product-info-img/confirm_order.png" alt="choose_product">
+                        </span>
+                        <div class="col">
+                            <h6>3. Thanh toán</h6>
+                            <p>- Đăng nhập hoặc đăng ký tài khoản.
+                                <br>- Hệ thống sẽ tự động tính phí giao hàng. Bạn có thể chọn lại phương thức vận chuyển
+                                khác.
+                                <br>- Chọn phương thức thanh toán.
+                                <br>- Nhấn nút đặt hàng
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <span class="col-2">
+                            <img src="/image/product-info-img/folow_process.png" alt="choose_product">
+                        </span>
+                        <div class="col">
+                            <h6>4. Xác nhận đơn hàng</h6>
+                            <p>Hệ thống hiển thị popup xác nhận thông tin đơn hàng. Kiểm tra và nhấn nút xác nhận để
+                                giao
+                                dịch và thanh toán. Nếu bạn chọn thanh toán trực tuyến, hệ thống sẽ đưa bạn đến trang để
+                                thực
+                                hiện thanh toán.</p>
+                        </div>
+                    </div>
+
+                    <div class="row py-4">
+                        <span class="col-2">
+                            <img src="/image/product-info-img/flow_order.png" alt="choose_product">
+                        </span>
+                        <div class="col">
+                            <h6>5. Theo dõi trạng thái</h6>
+                            <p>Sau khi đặt hàng, bạn có thể theo dõi tình trạng đơn hàng của mình trong Tài khoản cá
+                                nhân.
+                                <br>Sau khi gian hàng đã chuyển hàng cho đơn vị vận chuyển, mã vận đơn sẽ được cập nhật.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h6>Thanh toán</h6>
+                    <p>Công ty cổ phần phát triển giải pháp giáo dục VIVI EDUCATION là đơn vị vận hành sàn book365.vn,
+                        do đó tên người nhận thanh toán của tất cả các kênh trực tuyến, bao gồm tên tài khoản ngân hàng
+                        là Công ty cổ phần phát triển giải pháp giáo dục VIVI EDUCATION. Hãy yên tâm rằng bạn đang thanh
+                        toán cho sàn book365.vn
+                        <br>Ngân hàng trực tuyến
+                        <br>Chuyển khoản ngân hàng
+                        <br>Ví điện tử Momo
+                        <br>Thẻ tín dụng / Thẻ ghi nợ
+                        <br>Thanh tóan khi nhận hàng COD
+                    </p>
+
+                </div>
+
+
+            </div>
         </div>
-
-      </div>
     </div>
-  </div>
 
-  <div class="p-4 bg-primary text-white text-center">
-    <p>Copyright &copy; 2022 - SmartBook</p>
-  </div>
+
+    <!--Footer-->
+    <footer>
+        @include('layout.footer')
+    </footer>
 
 
 </body>
